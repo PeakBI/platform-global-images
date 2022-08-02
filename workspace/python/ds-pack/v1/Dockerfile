@@ -81,7 +81,7 @@ COPY ./spark /usr/local/spark
 # VS Code
 COPY codeserver-proxy codeserver-proxy
 RUN curl -fsSL https://code-server.dev/install.sh \
-    | sh -s -- --version 4.4.0 \
+    | sh -s -- --version 4.5.1 \
     && pip install --no-cache-dir ./codeserver-proxy
 
 RUN git config --global credential.helper store \
