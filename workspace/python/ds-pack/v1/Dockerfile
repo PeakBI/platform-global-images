@@ -19,7 +19,7 @@ RUN apt-get update \
         "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
         $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null \
     && apt-key adv --keyserver keyserver.ubuntu.com --recv-key '95C0FAF38DB3CCAD0C080A7BDC78B2DDEABC47B7' \
-    && add-apt-repository 'deb http://cloud.r-project.org/bin/linux/debian buster-cran40/' \
+    && add-apt-repository 'deb http://cloud.r-project.org/bin/linux/debian bullseye-cran40/' \
     # node
     && curl -sL https://deb.nodesource.com/setup_lts.x | bash - \
     && apt-get update \
@@ -56,7 +56,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # install AWS CLI v2
-RUN curl -fsSL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.7.4.zip" -o "awscliv2.zip" \
+RUN curl -fsSL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.7.20.zip" -o "awscliv2.zip" \
     && unzip -q awscliv2.zip \
     && ./aws/install \
     && rm -rf aws awscliv2.zip
