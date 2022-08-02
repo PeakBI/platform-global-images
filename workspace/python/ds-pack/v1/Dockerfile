@@ -91,7 +91,7 @@ RUN git config --global credential.helper store \
 COPY projector-proxy projector-proxy
 RUN pip install --no-cache-dir projector-installer==1.8.0 --upgrade \
     && projector --accept-license --config-directory /usr/local/share/projector \
-    ide autoinstall --config-name pycharm --ide-name "PyCharm Community Edition 2022.2.0" \
+    ide autoinstall --config-name pycharm --ide-name "PyCharm Community Edition 2022.2" \
     && chmod -R a=rwx /usr/local/share/projector \
     && pip install --no-cache-dir ./projector-proxy
 
