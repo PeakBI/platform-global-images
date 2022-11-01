@@ -92,9 +92,6 @@ ENV AMAZONREDSHIFTODBCINI=/opt/amazon/redshiftodbc/lib/64/amazon.redshiftodbc.in
 RUN git config --global credential.helper store \
     && git config --global core.filemode false
     
-## build ARGs
-NCPUS=${NCPUS:--1}
-
 # test
-install2.r --error --skipinstalled -n "$NCPUS" -l /usr/local/lib/R/library \
+install2.r --error --skipinstalled -l /usr/local/lib/R/library \
     tidyverse
