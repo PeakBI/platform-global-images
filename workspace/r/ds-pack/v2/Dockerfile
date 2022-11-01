@@ -84,7 +84,7 @@ RUN wget https://sfc-repo.snowflakecomputing.com/odbc/linux/2.24.4/snowflake-odb
 COPY odbcinst.ini /etc/odbcinst.ini
 COPY amazon.redshiftodbc.ini /opt/amazon/redshiftodbc/lib/64/amazon.redshiftodbc.ini
 
-ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+#ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 ENV ODBCSYSINI=/etc
 ENV AMAZONREDSHIFTODBCINI=/opt/amazon/redshiftodbc/lib/64/amazon.redshiftodbc.ini
 
@@ -95,4 +95,4 @@ RUN git config --global credential.helper store \
 # test
 #RUN install2.r --error --deps TRUE -l /usr/local/lib/R/library \
 #    tidyverse
-RUN R -e "install.packages('tidyverse', dependencies = TRUE, lib = '/usr/local/lib/R/library', repos = 'https://cran.rstudio.com/')"
+#RUN R -e "install.packages('tidyverse', dependencies = TRUE, lib = '/usr/local/lib/R/library', repos = 'https://cran.rstudio.com/')"
