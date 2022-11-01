@@ -72,12 +72,12 @@ ENV AWS_PAGER=""
 
 # https://docs.aws.amazon.com/redshift/latest/mgmt/configure-odbc-connection.html#install-odbc-driver-linux
 # Install Redshift ODBC Driver
-RUN wget https://s3.amazonaws.com/redshift-downloads/drivers/odbc/1.4.52.1000/AmazonRedshiftODBC-64-bit-1.4.52.1000-1.x86_64.deb -O AmazonRedshiftODBC.deb \
+RUN wget https://s3.amazonaws.com/redshift-downloads/drivers/odbc/1.4.52.1000/AmazonRedshiftODBC-64-bit-1.4.52.1000-1.x86_64.deb -q -O AmazonRedshiftODBC.deb \
   && apt install ./AmazonRedshiftODBC.deb \
   && rm ./AmazonRedshiftODBC.deb
 
 # Install Snowflake ODBC Driver
-RUN wget https://sfc-repo.snowflakecomputing.com/odbc/linux/2.24.4/snowflake-odbc-2.24.4.x86_64.deb -O SnowflakeODBC.deb \
+RUN wget https://sfc-repo.snowflakecomputing.com/odbc/linux/2.24.4/snowflake-odbc-2.24.4.x86_64.deb -q -O SnowflakeODBC.deb \
   && apt install -y ./SnowflakeODBC.deb \
   && rm ./SnowflakeODBC.deb
 
@@ -95,4 +95,4 @@ RUN git config --global credential.helper store \
 # test
 #RUN install2.r --error --deps TRUE -l /usr/local/lib/R/library \
 #    tidyverse
-RUN R -e "install.packages('tidyverse', dependencies = TRUE, lib = '/usr/local/lib/R/library', repos = 'https://cran.rstudio.com/'")
+RUN R -e "install.packages('tidyverse', dependencies = TRUE, lib = '/usr/local/lib/R/library', repos = 'https://cran.rstudio.com/')"
