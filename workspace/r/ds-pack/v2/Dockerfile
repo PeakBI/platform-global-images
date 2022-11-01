@@ -1,4 +1,4 @@
-FROM rocker/verse:4.2.1
+FROM rocker/verse:4.2.2
 
 # Adding dependencies for top 100 CRAN Packages
 RUN apt-get update \
@@ -91,3 +91,10 @@ ENV AMAZONREDSHIFTODBCINI=/opt/amazon/redshiftodbc/lib/64/amazon.redshiftodbc.in
 # Make git not care about file permission changes
 RUN git config --global credential.helper store \
     && git config --global core.filemode false
+    
+## build ARGs
+NCPUS=${NCPUS:--1}
+
+# test
+install2.r --error --skipinstalled -n "$NCPUS" -l /usr/local/lib/R/library \
+    tidyverse
