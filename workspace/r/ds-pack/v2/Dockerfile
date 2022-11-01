@@ -93,5 +93,5 @@ RUN git config --global credential.helper store \
     && git config --global core.filemode false
     
 # test
-RUN install2.r --error --skipinstalled -l /usr/local/lib/R/site-library \
+RUN install2.r --error -l /usr/local/lib/R/site-library \
     tidyverse
