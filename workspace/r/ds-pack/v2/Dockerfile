@@ -1,4 +1,4 @@
-FROM rocker/verse:4.2.2
+FROM rocker/verse:4.2.1
 
 # Adding dependencies for top 100 CRAN Packages
 RUN apt-get update \
@@ -95,4 +95,4 @@ RUN git config --global credential.helper store \
 # test
 #RUN install2.r --error --deps TRUE -l /usr/local/lib/R/library \
 #    tidyverse
-RUN R -e "install.packages('tidyverse', dependencies = TRUE, lib = '/usr/local/lib/R/library')"
+RUN R -e "install.packages('tidyverse', dependencies = TRUE, lib = '/usr/local/lib/R/library', repos = 'https://cran.rstudio.com/'")
