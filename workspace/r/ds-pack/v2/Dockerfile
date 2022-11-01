@@ -1,4 +1,4 @@
-FROM rocker/verse:4.2.1
+FROM rocker/verse:4.2.2
 
 # Adding dependencies for top 100 CRAN Packages
 RUN apt-get update \
