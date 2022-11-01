@@ -95,4 +95,4 @@ RUN git config --global credential.helper store \
 # test
 #RUN install2.r --error --deps TRUE -l /usr/local/lib/R/library \
 #    tidyverse
-RUN R -e "install.packages('tidyverse', lib = '/usr/local/lib/R/library')"
+RUN R -e "install.packages('tidyverse', dependencies = TRUE, lib = '/usr/local/lib/R/library')"
