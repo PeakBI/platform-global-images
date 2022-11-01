@@ -93,5 +93,6 @@ RUN git config --global credential.helper store \
     && git config --global core.filemode false
     
 # test
-RUN install2.r --error --deps TRUE -l /usr/local/lib/R/library \
-    tidyverse
+#RUN install2.r --error --deps TRUE -l /usr/local/lib/R/library \
+#    tidyverse
+RUN R -e "install.packages('tidyverse', lib = '/usr/local/lib/R/library')"
