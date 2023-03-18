@@ -9,7 +9,7 @@ This image uses [python:3.10-bullseye](https://hub.docker.com/layers/library/pyt
 ### OS and other details
 ```
 Debian         GNU/Linux 10 (buster)
-Linux Kernel   5.10.104-linuxkit
+Linux Kernel   5.10.167
 Python         3.10.10
 ```
 
