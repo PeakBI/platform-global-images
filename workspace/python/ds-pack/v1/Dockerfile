@@ -1,4 +1,4 @@
-FROM python:3.10
+FROM python:3.10-bullseye
 
 # Set shell to be bash and fail any pipe if any step in the pipe fails
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
@@ -53,6 +53,7 @@ RUN apt-get update \
     libxtst6 \
     libfreetype6 \
     libxi6 \
+    libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # install AWS CLI v2
@@ -81,7 +82,7 @@ COPY ./spark /usr/local/spark
 # VS Code
 COPY codeserver-proxy codeserver-proxy
 RUN curl -fsSL https://code-server.dev/install.sh \
-    | sh -s -- --version 4.5.1 \
+    | sh -s -- --version 4.11.0 \
     && pip install --no-cache-dir ./codeserver-proxy
 
 RUN git config --global credential.helper store \
