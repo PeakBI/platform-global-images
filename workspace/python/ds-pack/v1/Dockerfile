@@ -1,4 +1,4 @@
-FROM python:3.10-bullseye
+FROM python:3.11.2-slim-buster
 
 # Set shell to be bash and fail any pipe if any step in the pipe fails
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
