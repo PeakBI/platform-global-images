@@ -88,14 +88,6 @@ RUN curl -fsSL https://code-server.dev/install.sh \
 RUN git config --global credential.helper store \
     && git config --global core.filemode false
 
-# Install Projector & PyCharm Community
-COPY projector-proxy projector-proxy
-RUN pip install --no-cache-dir projector-installer==1.5.2 --upgrade \
-    && projector --accept-license --config-directory /usr/local/share/projector \
-    ide autoinstall --config-name pycharm --ide-name "PyCharm Community Edition 2021.3.1" \
-    && chmod -R a=rwx /usr/local/share/projector \
-    && pip install --no-cache-dir ./projector-proxy
-
 # force shell to bash as Peak Platform isn't respecting jupyterhub option
 RUN ln -sf /bin/bash /bin/sh
 
