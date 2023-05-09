@@ -1,4 +1,4 @@
-FROM python:3.11.2-slim-buster
+FROM python:3.8.13-slim-buster
 
 # Set shell to be bash and fail any pipe if any step in the pipe fails
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
@@ -19,7 +19,7 @@ RUN apt-get update \
         "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
         $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null \
     && apt-key adv --keyserver keyserver.ubuntu.com --recv-key '95C0FAF38DB3CCAD0C080A7BDC78B2DDEABC47B7' \
-    && add-apt-repository 'deb http://cloud.r-project.org/bin/linux/debian bullseye-cran40/' \
+    && add-apt-repository 'deb http://cloud.r-project.org/bin/linux/debian buster-cran40/' \
     # node
     && curl -sL https://deb.nodesource.com/setup_lts.x | bash - \
     && apt-get update \
@@ -53,11 +53,10 @@ RUN apt-get update \
     libxtst6 \
     libfreetype6 \
     libxi6 \
-    libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # install AWS CLI v2
-RUN curl -fsSL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.7.20.zip" -o "awscliv2.zip" \
+RUN curl -fsSL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.7.4.zip" -o "awscliv2.zip" \
     && unzip -q awscliv2.zip \
     && ./aws/install \
     && rm -rf aws awscliv2.zip
@@ -82,7 +81,7 @@ COPY ./spark /usr/local/spark
 # VS Code
 COPY codeserver-proxy codeserver-proxy
 RUN curl -fsSL https://code-server.dev/install.sh \
-    | sh -s -- --version 4.11.0 \
+    | sh -s -- --version 4.4.0 \
     && pip install --no-cache-dir ./codeserver-proxy
 
 RUN git config --global credential.helper store \
