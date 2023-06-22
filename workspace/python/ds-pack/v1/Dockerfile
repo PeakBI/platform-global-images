@@ -1,4 +1,4 @@
-FROM python:3.10-bullseye
+FROM python:3.10.10-alpine3.17
 
 # Set shell to be bash and fail any pipe if any step in the pipe fails
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
@@ -55,10 +55,7 @@ RUN apt-get update \
     libxi6 \
     libpq-dev \
     && rm -rf /var/lib/apt/lists/*
-
-RUN apt install -y python3.10=3.10.10-1
-RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.10 1
-
+    
 # install AWS CLI v2
 RUN curl -fsSL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.7.20.zip" -o "awscliv2.zip" \
     && unzip -q awscliv2.zip \
