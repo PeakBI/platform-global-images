@@ -55,7 +55,7 @@ RUN apt-get update \
     libxi6 \
     libpq-dev \
     && rm -rf /var/lib/apt/lists/*
-
+    
 # install AWS CLI v2
 RUN curl -fsSL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.7.20.zip" -o "awscliv2.zip" \
     && unzip -q awscliv2.zip \
